@@ -1,0 +1,14 @@
+.login-page{
+    text-align: center;
+    margin-top: 10rem;
+}
+
+#controls{
+margin: 0 auto;
+display: block;
+width: 40%;
+}
+
+mat-form-field{
+width: 50%;
+}

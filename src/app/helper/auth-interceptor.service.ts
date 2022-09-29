@@ -26,4 +26,4 @@ export const authIntercepterProviders=[
   {
     provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi:true
   }
-]
+];

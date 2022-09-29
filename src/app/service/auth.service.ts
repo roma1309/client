@@ -11,14 +11,14 @@ export class AuthService {
 
   constructor(private http:HttpClient) { }
 
-  public login(user):Observable<any>{
+  public login(user: { username: any; password: any; }):Observable<any>{
     return this.http.post(AUTH_API+'signin',{
       username:user.username,
       password:user.password
     });
   }
 
-  public register(user): Observable<any>{
+  public register(user: { email: any; username: any; password: any; firstname: any; lastname: any; }): Observable<any>{
     return this.http.post(AUTH_API+'signup',{
       email:user.email,
       username:user.username,

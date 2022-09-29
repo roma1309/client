@@ -25,7 +25,7 @@ export class PostService {
     }
 
     delete(id:number):Observable<any>{
-      return this.delete(POST_API + id + '/delete');
+     return this.http.delete(POST_API + id + '/delete');
     }
     
     likePost(id:number, username:string):Observable<any>{

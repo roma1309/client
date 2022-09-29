@@ -12,7 +12,7 @@ export class AuthGuardService implements CanActivate{
     private tokenService:TokenStorageService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    const currentUser=this.tokenService.getUser;
+    const currentUser=this.tokenService.getUser();
     if(currentUser){
       return true;
     }
