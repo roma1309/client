@@ -18,13 +18,14 @@ export class AuthService {
     });
   }
 
-  public register(user: { email: any; username: any; password: any; firstname: any; lastname: any; }): Observable<any>{
+  public register(user: { email: any; username: any; password: any; firstname: any; lastname: any; confirmPassword:any}): Observable<any>{
     return this.http.post(AUTH_API+'signup',{
       email:user.email,
       username:user.username,
       password:user.password,
       firstname:user.firstname,
-      lastname:user.lastname
+      lastname:user.lastname,
+      confirmPassword:user.confirmPassword
     })
   }
 }
