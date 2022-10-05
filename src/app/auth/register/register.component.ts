@@ -47,7 +47,6 @@ export class RegisterComponent implements OnInit {
       confirmPassword:this.registerForm.value.confirmPassword
     }).subscribe(data => {
       console.log(data);
-
       this.notificationService.showSnackBar('Successfuly registered');
     }, error =>{
     console.log(error);

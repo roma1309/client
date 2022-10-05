@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/service/auth.service';
 import { NotificationService } from 'src/app/service/notification.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -16,6 +17,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
   private authService:AuthService,
+
   private tokenStorage:TokenStorageService,
   private notificationService:NotificationService,
   private router:Router,
@@ -41,18 +43,19 @@ export class LoginComponent implements OnInit {
     this.authService.login({
       username:this.loginForm.value.username,
       password:this.loginForm.value.password
-    }).subscribe(data => {
+    }).subscribe({next : (data) => {
       console.log(data);
 
-      this.tokenStorage.saveToken(data.token);
+      this.tokenStorage.saveToken(data.jwt);
       this.tokenStorage.saveUser(data);
 
-      this.notificationService.showSnackBar('Successfuly logged in');
+      this.notificationService.showSnackBar(data.token);
       this.router.navigate(['/']);
       window.location.reload();
-    }, error =>{
-    console.log(error);
-    this.notificationService.showSnackBar(error.message);
-    });
+    }, error : err =>{
+    console.log(err);
+    this.notificationService.showSnackBar(err.message);
+    }
+  });
   }
 }
