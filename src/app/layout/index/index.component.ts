@@ -64,8 +64,9 @@ export class IndexComponent implements OnInit {
   likePost(postId:number, postIndex:number): void{
     const post = this.posts[postIndex];
     console.log(post);
+    console.log(post.usersLiked?.includes(this.user.username));
 
-    if(!post.usersLiked?.includes(this.user.username)) {
+    if(!post.usersLiked?.indexOf(this.user.username,0)) {
       this.postServise.likePost(postId, this.user.username)
       .subscribe(() => {
         post.usersLiked?.push(this.user.username);
@@ -75,8 +76,9 @@ export class IndexComponent implements OnInit {
       this.postServise.likePost(postId, this.user.username)
       .subscribe(() => {
          const index = post.usersLiked?.indexOf(this.user.username,0);
-        if(Number(index) > -1) {
+        if(<any>index > -1) {
           post.usersLiked?.splice(Number(index), 1);
+           this.notificationService.showSnackBar('not -Liked!');
         }
       });
     }
@@ -104,6 +106,7 @@ export class IndexComponent implements OnInit {
     const post = this.posts[postIndex];
     console.log(post);
    const number = post.usersLiked?.indexOf(username);
+   console.log(number);
    return Number(number);
   }
 }

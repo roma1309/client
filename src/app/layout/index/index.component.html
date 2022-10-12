@@ -11,8 +11,8 @@
       <p>{{post.caption}}</p>
     </mat-card-content>
     <mat-card-actions align="start">
-      <button mat-button (click)="likePost(post.id, i)"  [ngClass]="search(post.username, i) !== -1 ? 'is-liked' : 'not-liked'">
-      <mat-icon >favorites</mat-icon> LIKE</button>
+      <button mat-button (click)="likePost(post.id, i)">
+      <mat-icon >favorite</mat-icon> LIKE</button>
     </mat-card-actions>
     <div style="text-align: left;">
         <p *ngFor="let comment of post.comments"><span style="font-weight: 500;">{{comment.username}}</span>:{{comment.message}}</p>
