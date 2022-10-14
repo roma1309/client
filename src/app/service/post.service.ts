@@ -12,7 +12,7 @@ export class PostService {
 
   constructor(private http:HttpClient) { }
 
-  createPost(post:Post):Observable<any>{
+  createPost(post:{title:string, location: string, caption: string}):Observable<any>{
     return this.http.post(POST_API+'create',post);
     }
 
